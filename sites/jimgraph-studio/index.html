@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JimGraph Studio | Fotografía, Diseño & Audiovisuales — Santo Domingo</title>
+  <meta name="description" content="JimGraph Studio: fotografía profesional, diseño gráfico, videos musicales y estudio de grabación en Santo Domingo, RD. Agenda tu cita." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" href="assets/logo.jpeg" type="image/jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #e10600;
+      --red-hot: #ff1a14;
+      --red-deep: #9b0000;
+      --black: #050505;
+      --black-2: #0c0c0c;
+      --black-3: #141414;
+      --gray: #1a1a1a;
+      --gray-2: #2a2a2a;
+      --muted: #9a9a9a;
+      --white: #f5f5f5;
+      --white-pure: #ffffff;
+      --radius: 18px;
+      --nav-h: 78px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --font: "Outfit", system-ui, sans-serif;
+      --display: "Bebas Neue", "Outfit", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    ul { list-style: none; }
+
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(225,6,0,0.14) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      mix-blend-mode: screen;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+    @media (hover: hover) {
+      body:hover .cursor-glow { opacity: 1; }
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 2.5rem));
+      margin-inline: auto;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.4s var(--ease), backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(5,5,5,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom-color: rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      width: min(1200px, calc(100% - 2.5rem));
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 1001;
+    }
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 0 2px var(--red), 0 0 24px rgba(225,6,0,0.45);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s;
+    }
+    .brand:hover .brand-logo {
+      transform: scale(1.06) rotate(-4deg);
+      box-shadow: 0 0 0 2px var(--red-hot), 0 0 36px rgba(225,6,0,0.7);
+    }
+    .brand-text {
+      font-family: var(--display);
+      font-size: 1.45rem;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .brand-text span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.35s var(--ease);
+    }
+    .nav-links a:hover { color: var(--white-pure); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.9rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.03em;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s, background 0.3s, color 0.3s, border-color 0.3s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white-pure);
+      box-shadow: 0 8px 28px rgba(225,6,0,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--red-hot);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(225,6,0,0.5);
+    }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      color: var(--white);
+    }
+    .btn-ghost:hover {
+      border-color: var(--red);
+      color: var(--white-pure);
+      background: rgba(225,6,0,0.1);
+      transform: translateY(-2px);
+    }
+    .btn-white {
+      background: var(--white-pure);
+      color: var(--black);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(255,255,255,0.18);
+    }
+    .nav-cta { display: inline-flex; }
+    .nav-links a.btn-primary {
+      color: var(--white-pure);
+      margin-top: 0.75rem;
+    }
+    .nav-links a.btn-primary::after { display: none; }
+    .nav-links a.btn-primary:hover { color: var(--white-pure); }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--white);
+      transition: 0.3s var(--ease);
+    }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 2rem) 0 4rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      animation: kenburns 22s ease-in-out infinite alternate;
+      filter: brightness(0.38) contrast(1.1) saturate(0.9);
+    }
+    @keyframes kenburns {
+      from { transform: scale(1.08) translate(0, 0); }
+      to { transform: scale(1.18) translate(-2%, -1%); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(225,6,0,0.28), transparent 55%),
+        linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.35) 40%, rgba(5,5,5,0.95) 100%),
+        linear-gradient(90deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.25) 60%, rgba(5,5,5,0.7) 100%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+      opacity: 0.5;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1200px, calc(100% - 2.5rem));
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red-hot);
+      margin-bottom: 1.25rem;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+      box-shadow: 0 0 12px var(--red);
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(3.4rem, 8vw, 6.8rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.4rem;
+      max-width: 12ch;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+      text-shadow: 0 0 40px rgba(225,6,0,0.45);
+    }
+    .hero-lead {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: rgba(245,245,245,0.78);
+      max-width: 34ch;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 2.75rem;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--white-pure);
+    }
+    .stat span {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+
+    .hero-card {
+      position: relative;
+      justify-self: end;
+      width: min(100%, 380px);
+    }
+    .hero-card-frame {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(225,6,0,0.15);
+    }
+    .hero-card-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-card-badge {
+      position: absolute;
+      top: 1.1rem;
+      left: 1.1rem;
+      background: rgba(5,5,5,0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .hero-card-badge i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.85); }
+    }
+    .hero-float {
+      position: absolute;
+      right: -18px;
+      bottom: 42px;
+      background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+      border: 1px solid rgba(225,6,0,0.35);
+      border-radius: 18px;
+      padding: 1rem 1.15rem;
+      width: 190px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      animation: floaty 5s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hero-float .stars {
+      color: #fbbf24;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+    .hero-float p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .hero-float strong {
+      color: var(--white-pure);
+      font-size: 0.95rem;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-hint .line {
+      width: 1px;
+      height: 42px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      40% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      border-block: 1px solid rgba(255,255,255,0.06);
+      background: #080808;
+      overflow: hidden;
+      padding: 1rem 0;
+      position: relative;
+      z-index: 2;
+    }
+    .marquee {
+      display: flex;
+      gap: 2.5rem;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee span {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .marquee span::after {
+      content: "●";
+      color: var(--red);
+      font-size: 0.55rem;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 2; padding: 6.5rem 0; }
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      max-width: 12ch;
+    }
+    .section-head h2 span { color: var(--red); }
+    .section-head p {
+      max-width: 36ch;
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 1.02rem;
+    }
+
+    /* ABOUT / CONÓCEME */
+    .about {
+      background:
+        radial-gradient(ellipse 55% 50% at 100% 40%, rgba(225,6,0,0.14), transparent 55%),
+        radial-gradient(ellipse 40% 40% at 0% 80%, rgba(225,6,0,0.06), transparent 50%),
+        var(--black);
+      overflow: hidden;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+    .about-copy { position: relative; z-index: 2; }
+    .about-copy .eyebrow { margin-bottom: 0.9rem; }
+    .about-copy h2 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+      line-height: 0.92;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.35rem;
+    }
+    .about-copy h2 span { color: var(--red); }
+    .about-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245,245,245,0.9);
+      margin-bottom: 1.25rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(225,6,0,0.35);
+      background: rgba(225,6,0,0.08);
+    }
+    .about-role::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 10px var(--red);
+    }
+    .about-copy > p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 300;
+      font-size: 1.05rem;
+      max-width: 42ch;
+    }
+    .about-list {
+      margin: 1.75rem 0 2rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .about-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 12px rgba(225,6,0,0.7);
+      flex-shrink: 0;
+    }
+    .about-visual {
+      position: relative;
+      justify-self: end;
+      width: 100%;
+      max-width: 560px;
+    }
+    .about-visual-main {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 40px 90px rgba(0,0,0,0.55),
+        0 0 0 1px rgba(225,6,0,0.12),
+        0 0 80px rgba(225,6,0,0.12);
+      background: #0a0a0a;
+    }
+    .about-visual-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(5,5,5,0.35) 0%, transparent 35%),
+        linear-gradient(180deg, transparent 55%, rgba(5,5,5,0.55) 100%),
+        radial-gradient(ellipse at 30% 40%, rgba(225,6,0,0.18), transparent 55%);
+    }
+    .about-visual-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% center;
+      transition: transform 1.4s var(--ease);
+      filter: contrast(1.05) saturate(1.05);
+    }
+    .about-visual:hover .about-visual-main img { transform: scale(1.04); }
+    .about-visual-frame {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .about-logo-orb {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      left: -18px;
+      bottom: 36px;
+      object-fit: cover;
+      z-index: 3;
+      box-shadow: 0 0 0 5px var(--black), 0 0 36px rgba(225,6,0,0.55);
+      transition: transform 0.5s var(--ease);
+    }
+    .about-visual:hover .about-logo-orb { transform: scale(1.06) rotate(-6deg); }
+    .about-name-tag {
+      position: absolute;
+      right: 1.1rem;
+      bottom: 1.1rem;
+      z-index: 3;
+      background: rgba(5,5,5,0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 0.75rem 1rem;
+      min-width: 160px;
+    }
+    .about-name-tag strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 1.35rem;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .about-name-tag span {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .about-accent {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(225,6,0,0.25);
+      top: -30px;
+      right: -30px;
+      z-index: 0;
+      animation: pulseRing 4s ease-in-out infinite;
+    }
+    @keyframes pulseRing {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    /* SERVICES */
+    .services {
+      background: linear-gradient(180deg, var(--black) 0%, #0a0a0a 100%);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.15rem;
+    }
+    .service-card {
+      position: relative;
+      background: linear-gradient(160deg, #141414 0%, #0a0a0a 100%);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.4rem 1.6rem;
+      overflow: hidden;
+      transition: transform 0.45s var(--ease), border-color 0.35s, box-shadow 0.45s;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(225,6,0,0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(225,6,0,0.45);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.4), 0 0 40px rgba(225,6,0,0.08);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(225,6,0,0.12);
+      border: 1px solid rgba(225,6,0,0.3);
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.4rem;
+      color: var(--red-hot);
+      position: relative;
+      z-index: 1;
+    }
+    .service-icon svg { width: 26px; height: 26px; }
+    .service-card h3 {
+      font-family: var(--display);
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.7rem;
+      position: relative;
+      z-index: 1;
+    }
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 300;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .service-num {
+      position: absolute;
+      right: 1rem;
+      bottom: 0.5rem;
+      font-family: var(--display);
+      font-size: 4rem;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      z-index: 0;
+    }
+
+    /* PORTFOLIO */
+    .portfolio {
+      background:
+        radial-gradient(ellipse 40% 30% at 100% 0%, rgba(225,6,0,0.1), transparent 50%),
+        var(--black);
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: 0.3s var(--ease);
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white-pure);
+      box-shadow: 0 8px 24px rgba(225,6,0,0.3);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .work {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 280px;
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+      transition: opacity 0.4s, transform 0.4s var(--ease);
+    }
+    .work.hide {
+      display: none;
+    }
+    .work:nth-child(1) { grid-column: span 7; min-height: 380px; }
+    .work:nth-child(2) { grid-column: span 5; min-height: 380px; }
+    .work:nth-child(3) { grid-column: span 4; }
+    .work:nth-child(4) { grid-column: span 4; }
+    .work:nth-child(5) { grid-column: span 4; }
+    .work:nth-child(6) { grid-column: span 5; min-height: 340px; }
+    .work:nth-child(7) { grid-column: span 7; min-height: 340px; }
+    .work img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s var(--ease), filter 0.5s;
+      filter: saturate(0.92) contrast(1.05);
+    }
+    .work:hover img {
+      transform: scale(1.08);
+      filter: saturate(1.05) contrast(1.08);
+    }
+    .work-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.88) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.4rem;
+      opacity: 0.85;
+      transition: opacity 0.35s;
+    }
+    .work:hover .work-overlay { opacity: 1; }
+    .work-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red-hot);
+      margin-bottom: 0.35rem;
+    }
+    .work h3 {
+      font-family: var(--display);
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    /* PROCESS */
+    .process {
+      background: #080808;
+      border-block: 1px solid rgba(255,255,255,0.05);
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      counter-reset: step;
+    }
+    .step {
+      padding: 1.75rem 1.4rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      position: relative;
+      transition: border-color 0.3s, transform 0.4s var(--ease);
+    }
+    .step:hover {
+      border-color: rgba(225,6,0,0.4);
+      transform: translateY(-4px);
+    }
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      font-family: var(--display);
+      font-size: 2.8rem;
+      color: var(--red);
+      line-height: 1;
+      display: block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 30px rgba(225,6,0,0.35);
+    }
+    .step h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.55rem;
+      font-weight: 700;
+    }
+    .step p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+    .quote {
+      background: linear-gradient(160deg, #151515, #0b0b0b);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: transform 0.4s var(--ease), border-color 0.3s;
+    }
+    .quote:hover {
+      transform: translateY(-6px);
+      border-color: rgba(225,6,0,0.35);
+    }
+    .quote .stars { color: #fbbf24; letter-spacing: 2px; }
+    .quote p {
+      font-size: 1.02rem;
+      font-weight: 300;
+      color: rgba(245,245,245,0.88);
+      flex: 1;
+      line-height: 1.55;
+    }
+    .quote footer {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .quote .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--red);
+    }
+    .quote strong { display: block; font-size: 0.95rem; }
+    .quote small { color: var(--muted); font-size: 0.78rem; }
+
+    /* CTA BAND */
+    .cta-band {
+      padding: 0 0 6.5rem;
+    }
+    .cta-box {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      padding: clamp(2.5rem, 6vw, 4.5rem);
+      border: 1px solid rgba(225,6,0,0.35);
+      background:
+        radial-gradient(circle at 20% 50%, rgba(225,6,0,0.35), transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(225,6,0,0.15), transparent 40%),
+        linear-gradient(135deg, #1a0505 0%, #0a0a0a 50%, #120606 100%);
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .cta-box h2 {
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+    .cta-box h2 span { color: var(--red-hot); }
+    .cta-box p {
+      color: rgba(245,245,245,0.75);
+      max-width: 42ch;
+      margin-bottom: 1.75rem;
+      font-weight: 300;
+    }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .cta-side {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+    }
+    .cta-side img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      object-fit: cover;
+      box-shadow: 0 0 0 3px var(--red), 0 0 40px rgba(225,6,0,0.5);
+    }
+    .cta-side h3 {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    .cta-side p { color: var(--muted); font-size: 0.88rem; margin: 0; }
+
+    /* CONTACT */
+    .contact {
+      background: #080808;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 5rem;
+    }
+    .map-box {
+      position: relative;
+      margin-top: 2rem;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+      height: 420px;
+    }
+    .map-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: 24px;
+      box-shadow: inset 0 0 0 1px rgba(225,6,0,0.15);
+    }
+    .map-box iframe {
+      display: block;
+      filter: grayscale(0.9) contrast(1.05) brightness(0.9);
+      transition: filter 0.5s;
+    }
+    .map-box:hover iframe { filter: grayscale(0.2) contrast(1.05) brightness(1); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 2rem;
+    }
+    .contact-info {
+      display: grid;
+      gap: 1rem;
+    }
+    .info-card {
+      background: linear-gradient(160deg, #141414, #0b0b0b);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.35rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 0.3s, transform 0.35s var(--ease);
+    }
+    .info-card:hover {
+      border-color: rgba(225,6,0,0.4);
+      transform: translateX(4px);
+    }
+    .info-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(225,6,0,0.12);
+      border: 1px solid rgba(225,6,0,0.28);
+      display: grid;
+      place-items: center;
+      color: var(--red-hot);
+      flex-shrink: 0;
+    }
+    .info-icon svg { width: 20px; height: 20px; }
+    .info-card h4 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .info-card p, .info-card a {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .info-card a:hover { color: var(--red-hot); }
+
+    .contact-form-wrap {
+      background: linear-gradient(160deg, #141414, #0b0b0b);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .contact-form-wrap h3 {
+      font-family: var(--display);
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+    }
+    .contact-form-wrap > p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field.full { grid-column: 1 / -1; }
+    .field label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(225,6,0,0.15);
+    }
+    .field select option { background: #111; }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .form-note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 0 2rem;
+      background: var(--black);
+    }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand {
+      max-width: 320px;
+    }
+    .footer-brand .brand { margin-bottom: 1rem; }
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+    .footer-cols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .footer-col h5 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(245,245,245,0.85);
+      margin-bottom: 0.55rem;
+      font-size: 0.92rem;
+      transition: color 0.25s;
+    }
+    .footer-col a:hover { color: var(--red-hot); }
+    .socials {
+      display: flex;
+      gap: 0.65rem;
+    }
+    .socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: grid;
+      place-items: center;
+      transition: 0.3s var(--ease);
+      margin: 0;
+    }
+    .socials a:hover {
+      background: var(--red);
+      border-color: var(--red);
+      transform: translateY(-3px);
+    }
+    .socials svg { width: 18px; height: 18px; }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* WHATSAPP FLOAT */
+    .wa-float {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1200;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 30px rgba(37,211,102,0.4);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s;
+      animation: waPulse 2.4s infinite;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 16px 40px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 30px; height: 30px; }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.45), 0 12px 30px rgba(37,211,102,0.35); }
+      70% { box-shadow: 0 0 0 16px rgba(37,211,102,0), 0 12px 30px rgba(37,211,102,0.35); }
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* MOBILE */
+    @media (max-width: 980px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-card { justify-self: start; width: min(100%, 340px); }
+      .about-grid,
+      .contact-grid,
+      .cta-box { grid-template-columns: 1fr; }
+      .services-grid,
+      .process-grid,
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .work:nth-child(n) { grid-column: span 6; min-height: 260px; }
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        background: rgba(5,5,5,0.97);
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.75rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s;
+      }
+      .nav-links.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links a { font-size: 1.35rem; color: var(--white); }
+      .nav-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .about-logo-orb { width: 80px; height: 80px; left: 12px; bottom: 24px; }
+      .about-visual { max-width: 100%; justify-self: stretch; }
+      .about-visual-main { aspect-ratio: 16/11; max-height: 480px; }
+      .about-visual-main img { object-position: 65% center; }
+    }
+    @media (max-width: 640px) {
+      .services-grid,
+      .process-grid,
+      .testimonials-grid,
+      .form-grid { grid-template-columns: 1fr; }
+      .work:nth-child(n) { grid-column: span 12; min-height: 240px; }
+      .hero-stats { gap: 1.25rem; }
+      .hero-float { right: 8px; width: 160px; bottom: 24px; }
+      .scroll-hint { display: none; }
+      section { padding: 4.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand" aria-label="JimGraph Studio">
+        <img src="assets/logo.jpeg" alt="JimGraph Studio" class="brand-logo" />
+        <div class="brand-text">JIM<span>GRAPH</span></div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-primary" href="https://wa.me/18299771546?text=Hola%20JimGraph%20Studio%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">Agendar cita</a>
+      </nav>
+
+      <a class="btn btn-primary nav-cta" href="https://wa.me/18299771546?text=Hola%20JimGraph%20Studio%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.527 5.853L.057 23.443a.5.5 0 0 0 .61.61l5.62-1.464A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.09-1.396l-.364-.216-3.67.956.98-3.59-.237-.377A9.94 9.94 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2000&q=80" alt="Sesión fotográfica profesional" />
+        <div class="hero-overlay"></div>
+        <div class="hero-grid"></div>
+      </div>
+
+      <div class="hero-content">
+        <div>
+          <div class="eyebrow reveal">Santo Domingo · RD</div>
+          <h1 class="reveal reveal-delay-1">CREAMOS<br /><em>IMÁGENES</em><br />QUE PEGAN</h1>
+          <p class="hero-lead reveal reveal-delay-2">
+            Fotografía, diseño gráfico, videos musicales y estudio de grabación.
+            El look que tu marca, tu música y tu carrera necesitan.
+          </p>
+          <div class="hero-actions reveal reveal-delay-3">
+            <a class="btn btn-primary" href="https://wa.me/18299771546?text=Hola%20JimGraph%20Studio%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">Cotizar proyecto</a>
+            <a class="btn btn-ghost" href="#portfolio">Ver portfolio</a>
+          </div>
+          <div class="hero-stats reveal reveal-delay-4">
+            <div class="stat"><strong>15+</strong><span>Años de experiencia</span></div>
+            <div class="stat"><strong>5.0</strong><span>Rating en Google</span></div>
+            <div class="stat"><strong>350+</strong><span>Proyectos publicados</span></div>
+          </div>
+        </div>
+
+        <div class="hero-card reveal reveal-delay-2">
+          <div class="hero-card-frame">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80" alt="Cámara profesional en estudio" />
+            <div class="hero-card-badge"><i></i> Solo con cita</div>
+          </div>
+          <div class="hero-float">
+            <div class="stars">★★★★★</div>
+            <strong>9 opiniones</strong>
+            <p>Estudio de fotografía y producción en Santo Domingo</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        Scroll
+        <div class="line"></div>
+      </div>
+    </section>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span>Fotografía</span><span>Diseño Gráfico</span><span>Video Musical</span><span>Estudio de Grabación</span><span>Audiovisuales</span><span>Branding</span>
+        <span>Fotografía</span><span>Diseño Gráfico</span><span>Video Musical</span><span>Estudio de Grabación</span><span>Audiovisuales</span><span>Branding</span>
+      </div>
+    </div>
+
+    <section class="about" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <div class="eyebrow reveal">Conóceme</div>
+          <h2 class="reveal reveal-delay-1">QUIÉN<br /><span>SOY</span></h2>
+          <div class="about-role reveal reveal-delay-1">Fundador · JimGraph Studio</div>
+          <p class="reveal reveal-delay-2">
+            Soy el creativo detrás de JimGraph Studio. Más de 15 años convirtiendo ideas
+            en imágenes que venden: fotografía, diseño gráfico, video musical y producción
+            audiovisual para artistas y marcas en República Dominicana.
+          </p>
+          <p class="reveal reveal-delay-2">
+            Cada proyecto lo dirijo con el mismo criterio: actitud, detalle y un look
+            que se sienta premium desde el primer frame. Si tu imagen tiene que pegar,
+            aquí es donde empieza.
+          </p>
+          <ul class="about-list reveal reveal-delay-3">
+            <li>Diseñador gráfico & director creativo</li>
+            <li>Fotógrafo y productor audiovisual</li>
+            <li>Videos musicales y covers de alto impacto</li>
+            <li>Estudio en Santo Domingo · Solo con cita</li>
+          </ul>
+          <div class="hero-actions reveal reveal-delay-3" style="margin-bottom:0">
+            <a class="btn btn-primary" href="https://wa.me/18299771546?text=Hola%20Jim%2C%20quiero%20trabajar%20contigo" target="_blank" rel="noopener">Trabajemos juntos</a>
+            <a class="btn btn-ghost" href="#portfolio">Ver mi trabajo</a>
+          </div>
+        </div>
+
+        <div class="about-visual reveal reveal-delay-1">
+          <div class="about-accent" aria-hidden="true"></div>
+          <div class="about-visual-main">
+            <img src="assets/jim-portrait.jpeg" alt="Fundador de JimGraph Studio" />
+            <div class="about-visual-frame" aria-hidden="true"></div>
+          </div>
+          <img src="assets/logo.jpeg" alt="" class="about-logo-orb" />
+          <div class="about-name-tag">
+            <strong>JIMGRAPH</strong>
+            <span>Estudio · Santo Domingo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">LO QUE<br /><span>HACEMOS</span></h2>
+          <p class="reveal reveal-delay-1">Cuatro pilares creativos para que tu proyecto se vea, se sienta y suene a nivel internacional.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <h3>Fotografía</h3>
+            <p>Sesiones artísticas, press kits, lookbooks y contenido para redes con dirección de arte real.</p>
+            <span class="service-num">01</span>
+          </article>
+          <article class="service-card reveal reveal-delay-1">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <h3>Diseño Gráfico</h3>
+            <p>Covers, flyers, branding, merch y piezas promocionales que se sienten de gira mundial.</p>
+            <span class="service-num">02</span>
+          </article>
+          <article class="service-card reveal reveal-delay-2">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M10 9l5 3-5 3V9z"/></svg>
+            </div>
+            <h3>Audiovisuales</h3>
+            <p>Videos musicales, reels cinematográficos y contenido visual con narrativa y punch.</p>
+            <span class="service-num">03</span>
+          </article>
+          <article class="service-card reveal reveal-delay-3">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <h3>Estudio</h3>
+            <p>Grabación, producción y un espacio creativo listo para citas en Av. Albert Thomas.</p>
+            <span class="service-num">04</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">PORTFOLIO<br /><span>SELECTED</span></h2>
+          <p class="reveal reveal-delay-1">Una muestra del estilo JimGraph: contraste, actitud y detalle de estudio.</p>
+        </div>
+
+        <div class="filters reveal">
+          <button class="filter-btn active" data-filter="all">Todo</button>
+          <button class="filter-btn" data-filter="foto">Fotografía</button>
+          <button class="filter-btn" data-filter="diseno">Diseño</button>
+          <button class="filter-btn" data-filter="video">Video</button>
+          <button class="filter-btn" data-filter="musica">Música</button>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="work reveal" data-cat="foto">
+            <img src="assets/cover_press.jpg" alt="Artist Press Kit" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Fotografía</span>
+              <h3>Artist Press Kit</h3>
+            </div>
+          </article>
+          <article class="work reveal reveal-delay-1" data-cat="diseno">
+            <img src="assets/cover_energy.jpg" alt="Cover Art Energy" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Diseño</span>
+              <h3>Cover Art Energy</h3>
+            </div>
+          </article>
+          <article class="work reveal" data-cat="video">
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80" alt="Video musical en escena" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Video</span>
+              <h3>Music Video Set</h3>
+            </div>
+          </article>
+          <article class="work reveal reveal-delay-1" data-cat="musica">
+            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=900&q=80" alt="Estudio de grabación" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Estudio</span>
+              <h3>Recording Room</h3>
+            </div>
+          </article>
+          <article class="work reveal reveal-delay-2" data-cat="foto">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=900&q=80" alt="Retrato editorial" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Fotografía</span>
+              <h3>Editorial Portrait</h3>
+            </div>
+          </article>
+          <article class="work reveal" data-cat="diseno">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=80" alt="Branding y diseño" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Diseño</span>
+              <h3>Brand Identity</h3>
+            </div>
+          </article>
+          <article class="work reveal reveal-delay-1" data-cat="video">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80" alt="Producción audiovisual" loading="lazy" />
+            <div class="work-overlay">
+              <span class="work-tag">Audiovisual</span>
+              <h3>Cinematic Cut</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="proceso">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">CÓMO<br /><span>TRABAJAMOS</span></h2>
+          <p class="reveal reveal-delay-1">Proceso claro, comunicación directa y entrega con nivel de estudio profesional.</p>
+        </div>
+        <div class="process-grid">
+          <article class="step reveal">
+            <h3>Brief & visión</h3>
+            <p>Entendemos tu artista, marca o lanzamiento y definimos el concepto visual.</p>
+          </article>
+          <article class="step reveal reveal-delay-1">
+            <h3>Dirección creativa</h3>
+            <p>Look, color, tipografía y referencias para que todo hable el mismo idioma.</p>
+          </article>
+          <article class="step reveal reveal-delay-2">
+            <h3>Producción</h3>
+            <p>Sesión, diseño o rodaje en estudio con equipo y atención al detalle.</p>
+          </article>
+          <article class="step reveal reveal-delay-3">
+            <h3>Entrega final</h3>
+            <p>Archivos listos para redes, streaming, prensa y campaña promocional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="opiniones">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">LO QUE DICEN<br /><span>DE NOSOTROS</span></h2>
+          <p class="reveal reveal-delay-1">5.0 estrellas en Google. Resultados que se notan en la imagen del cliente.</p>
+        </div>
+        <div class="testimonials-grid">
+          <article class="quote reveal">
+            <div class="stars">★★★★★</div>
+            <p>“Salí del estudio con un look de artista internacional. La dirección fotográfica es otra liga.”</p>
+            <footer>
+              <img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="" />
+              <div>
+                <strong>Carlos M.</strong>
+                <small>Artista urbano</small>
+              </div>
+            </footer>
+          </article>
+          <article class="quote reveal reveal-delay-1">
+            <div class="stars">★★★★★</div>
+            <p>“El cover quedó brutal. Entendieron el vibe del tema desde el primer mensaje por WhatsApp.”</p>
+            <footer>
+              <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="" />
+              <div>
+                <strong>Andrea R.</strong>
+                <small>Manager musical</small>
+              </div>
+            </footer>
+          </article>
+          <article class="quote reveal reveal-delay-2">
+            <div class="stars">★★★★★</div>
+            <p>“Profesionales, puntuales y con un estudio que se siente premium. 100% recomendados en SD.”</p>
+            <footer>
+              <img class="avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80" alt="" />
+              <div>
+                <strong>Luis P.</strong>
+                <small>Emprendedor</small>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div>
+            <h2>¿LISTO PARA<br />QUE TU IMAGEN<br /><span>PEGUE DURO?</span></h2>
+            <p>Agenda tu cita en JimGraph Studio. Fotografía, diseño, video y grabación en un solo lugar en Santo Domingo.</p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="https://wa.me/18299771546?text=Hola%20JimGraph%20Studio%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+              <a class="btn btn-ghost" href="tel:+18299771546">Llamar ahora</a>
+            </div>
+          </div>
+          <div class="cta-side">
+            <img src="assets/logo.jpeg" alt="JimGraph Studio" />
+            <h3>JIMGRAPH STUDIO</h3>
+            <p>Lun–Vie · 9:00 AM – 7:00 PM<br />Solo con cita previa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="reveal">CONTACTO<br /><span>& UBICACIÓN</span></h2>
+          <p class="reveal reveal-delay-1">Escríbenos, llámanos o visita el estudio en Av. Albert Thomas 268, Distrito Nacional.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <a class="info-card reveal" href="https://wa.me/18299771546" target="_blank" rel="noopener">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.527 5.853L.057 23.443a.5.5 0 0 0 .61.61l5.62-1.464A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.09-1.396l-.364-.216-3.67.956.98-3.59-.237-.377A9.94 9.94 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              </div>
+              <div>
+                <h4>WhatsApp / Teléfono</h4>
+                <p>+1 (829) 977-1546</p>
+              </div>
+            </a>
+            <a class="info-card reveal reveal-delay-1" href="https://maps.app.goo.gl/TgPvdTuh4c5jut487" target="_blank" rel="noopener">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4>Dirección · Aquí</h4>
+                <p>Av. Albert Thomas 268<br />Santo Domingo 10401, RD</p>
+              </div>
+            </a>
+            <div class="info-card reveal reveal-delay-2">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div>
+                <h4>Horario</h4>
+                <p>Jueves y días laborables<br />9:00 AM – 7:00 PM · Solo citas</p>
+              </div>
+            </div>
+            <div class="info-card reveal reveal-delay-3">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div>
+                <h4>Redes</h4>
+                <p>
+                  <a href="https://www.instagram.com/jimgraphstudio/" target="_blank" rel="noopener">Instagram</a> ·
+                  <a href="https://www.facebook.com/jimgraphstudio/" target="_blank" rel="noopener">Facebook</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap reveal">
+            <h3>Cuéntanos tu proyecto</h3>
+            <p>Te respondemos por WhatsApp con una cotización clara y rápida.</p>
+            <form id="projectForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Nombre</label>
+                  <input id="name" name="name" type="text" placeholder="Tu nombre" required />
+                </div>
+                <div class="field">
+                  <label for="phone">Teléfono</label>
+                  <input id="phone" name="phone" type="tel" placeholder="829-000-0000" required />
+                </div>
+                <div class="field full">
+                  <label for="service">Servicio</label>
+                  <select id="service" name="service" required>
+                    <option value="">Selecciona una opción</option>
+                    <option>Fotografía</option>
+                    <option>Diseño Gráfico</option>
+                    <option>Video Musical / Audiovisual</option>
+                    <option>Estudio de Grabación</option>
+                    <option>Paquete completo</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="message">Mensaje</label>
+                  <textarea id="message" name="message" placeholder="Cuéntanos fechas, estilo y qué necesitas..." required></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1.1rem">Enviar por WhatsApp</button>
+              <p class="form-note">Al enviar se abrirá WhatsApp con tu mensaje listo para JimGraph Studio.</p>
+            </form>
+          </div>
+        </div>
+
+        <div class="map-box reveal">
+          <iframe
+            src="https://www.google.com/maps?q=JimGraph+Studio&ll=18.504186,-69.8965174&z=17&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="JimGraph Studio en Google Maps"></iframe>
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/TgPvdTuh4c5jut487" target="_blank" rel="noopener" style="position:absolute;left:50%;bottom:1.1rem;transform:translateX(-50%)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#inicio" class="brand">
+            <img src="assets/logo.jpeg" alt="JimGraph Studio" class="brand-logo" />
+            <div class="brand-text">JIM<span>GRAPH</span></div>
+          </a>
+          <p>Fotografía · Diseño Gráfico · Estudio de Grabación · Producción de Audiovisuales en Santo Domingo.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h5>Navegación</h5>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+          <div class="footer-col">
+            <h5>Servicios</h5>
+            <a href="#servicios">Fotografía</a>
+            <a href="#servicios">Diseño Gráfico</a>
+            <a href="#servicios">Videos Musicales</a>
+            <a href="#servicios">Estudio de Grabación</a>
+          </div>
+          <div class="footer-col">
+            <h5>Social</h5>
+            <div class="socials">
+              <a href="https://www.instagram.com/jimgraphstudio/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-3.2 1.7-4.8 4.9-4.9 1.3-.1 1.7-.1 4.9-.1zm0 1.8c-3.2 0-3.5 0-4.8.1-2.2.1-3.3 1.2-3.3 3.3-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 2.1 1.2 3.2 3.3 3.3 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c2.2-.1 3.2-1.2 3.3-3.3.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-2.2-1.2-3.2-3.3-3.3-1.3-.1-1.6-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm6.4-2.1a1.2 1.2 0 1 1-2.3 0 1.2 1.2 0 0 1 2.3 0z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/jimgraphstudio/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5h2.5V5H14c-2.5 0-4.2 1.7-4.2 4.4V12H7.5v3.5h2.3V22h3.7v-6.5H16L16.7 12h-3.2V9.5c0-.6.3-1 1-1z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/c/Jimgraphstudio" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> JimGraph Studio. Todos los derechos reservados.</span>
+        <span>Av. Albert Thomas 268 · Santo Domingo, RD</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/18299771546?text=Hola%20JimGraph%20Studio%2C%20quiero%20información" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.527 5.853L.057 23.443a.5.5 0 0 0 .61.61l5.62-1.464A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.09-1.396l-.364-.216-3.67.956.98-3.59-.237-.377A9.94 9.94 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const glow = document.getElementById("cursorGlow");
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 24);
+    }, { passive: true });
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("open");
+      navLinks.classList.toggle("open");
+      document.body.style.overflow = navLinks.classList.contains("open") ? "hidden" : "";
+    });
+
+    navLinks.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        menuToggle.classList.remove("open");
+        navLinks.classList.remove("open");
+        document.body.style.overflow = "";
+      });
+    });
+
+    if (window.matchMedia("(hover: hover)").matches) {
+      window.addEventListener("pointermove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      }, { passive: true });
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const works = document.querySelectorAll(".work");
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const f = btn.dataset.filter;
+        works.forEach((w) => {
+          const show = f === "all" || w.dataset.cat === f;
+          w.classList.toggle("hide", !show);
+        });
+      });
+    });
+
+    document.getElementById("projectForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value.trim();
+      const text = `Hola JimGraph Studio 👋%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Teléfono:* ${encodeURIComponent(phone)}%0A*Servicio:* ${encodeURIComponent(service)}%0A*Mensaje:*%0A${encodeURIComponent(message)}`;
+      window.open(`https://wa.me/18299771546?text=${text}`, "_blank");
+    });
+  </script>
+</body>
+</html>

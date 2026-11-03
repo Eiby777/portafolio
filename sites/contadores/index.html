@@ -1,0 +1,1489 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soler Soluciones Contables | Contabilidad en Santo Domingo</title>
+  <meta name="description" content="Soler Soluciones Contables en Ensanche La Fé, Santo Domingo. Contabilidad, impuestos y orden financiero para tu negocio. WhatsApp +1 829 466 2817." />
+  <meta name="theme-color" content="#0a2f28" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Soler Soluciones Contables" />
+  <meta property="og:title" content="Soler Soluciones Contables | Contabilidad en Santo Domingo" />
+  <meta property="og:description" content="Soler Soluciones Contables en Ensanche La Fé, Santo Domingo. Contabilidad, impuestos y orden financiero para tu negocio. WhatsApp +1 829 466 2817." />
+  <meta property="og:url" content="https://patentflick.lat/contadores/" />
+  <meta property="og:image" content="https://patentflick.lat/contadores/assets/og-image.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Soler Soluciones Contables" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Soler Soluciones Contables | Contabilidad en Santo Domingo" />
+  <meta name="twitter:description" content="Soler Soluciones Contables en Ensanche La Fé, Santo Domingo. Contabilidad, impuestos y orden financiero para tu negocio. WhatsApp +1 829 466 2817." />
+  <meta name="twitter:image" content="https://patentflick.lat/contadores/assets/og-image.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <style>
+    :root {
+      --c-bg: #f7f4ee;
+      --c-bg-soft: #efeae0;
+      --c-card: #fffdf9;
+      --c-primary: #0a2f28;
+      --c-primary-2: #b8953e;
+      --c-text: #121816;
+      --c-muted: #5a635e;
+      --c-line: rgba(18, 24, 22, .1);
+      --c-shadow: 0 28px 60px rgba(10, 47, 40, .1);
+      --font-head: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Instrument Sans', system-ui, sans-serif;
+      --ink: #0a2f28;
+      --ink-deep: #061c18;
+      --gold: #b8953e;
+      --gold-soft: #d4b56a;
+      --cream: #f7f4ee;
+      --paper: #fffdf9;
+      --maxw: 1180px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--c-text);
+      font-family: var(--font-body);
+    }
+
+    h1, h2, h3 { font-family: var(--font-head); font-weight: 400; letter-spacing: -.02em; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      background: rgba(247, 244, 238, .88);
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.is-scrolled,
+    .site-header { border-bottom-color: var(--c-line); }
+    .brand {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -.02em;
+    }
+    .brand em { color: var(--gold); font-style: italic; }
+    .site-nav a {
+      color: var(--c-muted);
+      font-weight: 500;
+      font-size: .88rem;
+    }
+    .site-nav a:hover {
+      color: var(--ink);
+      background: rgba(10, 47, 40, .05);
+    }
+    .site-nav .btn-primary {
+      background: #25d366 !important;
+      color: #062816 !important;
+      box-shadow: 0 8px 18px rgba(37, 211, 102, .25);
+      border-radius: 999px;
+    }
+    .site-nav .btn-primary:hover { background: #1ebe5a !important; }
+
+    .btn { border-radius: 999px; font-family: var(--font-body); font-weight: 600; }
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+      box-shadow: 0 14px 32px rgba(10, 47, 40, .28);
+    }
+    .btn-primary:hover { background: #0d3d34; transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(18, 24, 22, .18);
+      color: var(--c-text);
+    }
+    .btn-ghost:hover { background: rgba(18, 24, 22, .04); }
+
+    /* ---------- HERO editorial full-bleed ---------- */
+    .hero {
+      padding: 0;
+      min-height: min(92svh, 820px);
+    }
+    .hero-stage {
+      display: grid;
+      min-height: min(92svh, 820px);
+      background: var(--ink-deep);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-stage::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 20%, rgba(184, 149, 62, .18), transparent 55%),
+        radial-gradient(ellipse 50% 60% at 10% 90%, rgba(31, 122, 102, .25), transparent 50%);
+      pointer-events: none;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: calc(var(--header-h) + 48px) 24px 48px;
+      max-width: 720px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold-soft);
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 7.5vw, 5.2rem);
+      line-height: .96;
+      color: #fff;
+      font-weight: 400;
+      max-width: 12ch;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-soft);
+    }
+    .hero-lead {
+      margin-top: 22px;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, .68);
+      max-width: 38ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .hero .btn-ghost {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .28);
+      background: rgba(255, 255, 255, .04);
+    }
+    .hero .btn-ghost:hover { background: rgba(255, 255, 255, .12); }
+
+    .hero-rail {
+      position: relative;
+      z-index: 2;
+      display: none;
+      border-left: 1px solid rgba(255, 255, 255, .1);
+      padding: calc(var(--header-h) + 40px) 28px 40px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%);
+    }
+    .hero-visual {
+      flex: 1;
+      border-radius: 20px;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(155deg, rgba(184,149,62,.15), transparent 45%),
+        linear-gradient(180deg, #0f3d34 0%, #061c18 100%);
+      border: 1px solid rgba(255, 255, 255, .1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      top: -40px; right: -30px;
+      border-radius: 50%;
+      border: 1px solid rgba(184, 149, 62, .25);
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+    .hv-label {
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .45);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .hv-title {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      line-height: 1.15;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      max-width: 12ch;
+    }
+    .hv-badge {
+      position: absolute;
+      top: 20px; left: 20px;
+      z-index: 1;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(6, 28, 24, .7);
+      border: 1px solid rgba(255, 255, 255, .12);
+      font-size: .75rem;
+      color: var(--gold-soft);
+      backdrop-filter: blur(8px);
+    }
+    .hero-facts {
+      display: grid;
+      gap: 1px;
+      background: rgba(255, 255, 255, .1);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+    .hero-fact {
+      background: rgba(6, 28, 24, .65);
+      padding: 16px 18px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-fact span {
+      display: block;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .45);
+      margin-bottom: 4px;
+    }
+    .hero-fact strong {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    /* Mobile hero facts under copy */
+    .hero-facts-mobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 36px;
+      max-width: 480px;
+    }
+    .hero-facts-mobile .hero-fact {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    /* ---------- Marquee strip ---------- */
+    .marquee-band {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .55);
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      overflow: hidden;
+      padding: 16px 0;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 32s linear infinite;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .marquee-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding-right: 28px;
+    }
+    .marquee-track span::after {
+      content: '·';
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ---------- Section chrome ---------- */
+    section { padding: 88px 20px; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; }
+
+    .sec-label {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .sec-label .idx {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .sec-label .line {
+      flex: 1;
+      height: 1px;
+      background: var(--c-line);
+      max-width: 80px;
+    }
+    .sec-label .tag {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+    }
+    .sec-title {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.05;
+      max-width: 16ch;
+      color: var(--ink);
+    }
+    .sec-title em { font-style: italic; color: var(--gold); }
+    .sec-lead {
+      margin-top: 16px;
+      color: var(--c-muted);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      max-width: 42ch;
+    }
+
+    /* ---------- About: split editorial ---------- */
+    .about {
+      background: var(--cream);
+    }
+    .about-layout {
+      display: grid;
+      gap: 48px;
+      align-items: end;
+    }
+    .about-media {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1.4fr 1fr;
+      grid-template-rows: 200px 140px;
+    }
+    .ph {
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--c-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+    .ph-a {
+      grid-row: 1 / -1;
+      background:
+        linear-gradient(165deg, rgba(10,47,40,.92), rgba(6,28,24,.85)),
+        repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(255,255,255,.02) 10px, rgba(255,255,255,.02) 20px);
+      color: #fff;
+      min-height: 340px;
+    }
+    .ph-a::before {
+      content: '';
+      position: absolute;
+      width: 160px; height: 160px;
+      right: -30px; top: 20%;
+      border: 1px solid rgba(184, 149, 62, .3);
+      border-radius: 50%;
+    }
+    .ph-b {
+      background: linear-gradient(145deg, #ebe4d6, #f7f4ee);
+      color: var(--ink);
+    }
+    .ph-c {
+      background: var(--ink);
+      color: #fff;
+    }
+    .ph-kicker {
+      font-size: .65rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .55;
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .ph-name {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      line-height: 1.2;
+      position: relative;
+      max-width: 12ch;
+    }
+    .ph-mark {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid currentColor;
+      opacity: .35;
+      display: grid; place-items: center;
+      font-family: var(--font-head);
+      font-size: .9rem;
+    }
+    .about-body .sec-title { max-width: 14ch; }
+    .about-body p {
+      color: var(--c-muted);
+      margin-top: 14px;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      max-width: 44ch;
+    }
+    .about-body p strong { color: var(--ink); font-weight: 600; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 36px;
+      border-top: 1px solid var(--c-line);
+    }
+    .about-stat {
+      padding: 22px 16px 0 0;
+      border-right: 1px solid var(--c-line);
+    }
+    .about-stat:last-child { border-right: 0; padding-right: 0; }
+    .about-stat b {
+      display: block;
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .about-stat span {
+      font-size: .82rem;
+      color: var(--c-muted);
+      line-height: 1.35;
+    }
+
+    /* ---------- Services: magazine list ---------- */
+    .services {
+      background: var(--ink-deep);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .services::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      right: -150px; top: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 149, 62, .12), transparent 65%);
+      pointer-events: none;
+    }
+    .services .sec-title { color: #fff; max-width: 14ch; }
+    .services .sec-lead { color: rgba(255, 255, 255, .58); }
+    .services .sec-label .tag { color: rgba(255, 255, 255, .4); }
+    .services .sec-label .line { background: rgba(255, 255, 255, .12); }
+
+    .svc-list {
+      margin-top: 48px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+    .svc-row {
+      display: grid;
+      gap: 12px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      transition: background .3s ease;
+      align-items: start;
+    }
+    .svc-row:hover { background: rgba(255, 255, 255, .03); }
+    .svc-num {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+    .svc-row h3 {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      color: #fff;
+      font-weight: 400;
+    }
+    .svc-row p {
+      color: rgba(255, 255, 255, .55);
+      font-size: .98rem;
+      line-height: 1.6;
+      max-width: 42ch;
+    }
+    .svc-ico {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      display: grid; place-items: center;
+      color: var(--gold-soft);
+      background: rgba(255, 255, 255, .03);
+    }
+    .svc-ico svg { width: 20px; height: 20px; }
+
+    /* ---------- Process: vertical timeline ---------- */
+    .process-sec { background: var(--cream); }
+    .process-layout {
+      display: grid;
+      gap: 48px;
+    }
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px; top: 8px; bottom: 8px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--gold), var(--c-line));
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 20px;
+      padding: 0 0 40px;
+      position: relative;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1.5px solid var(--gold);
+      display: grid; place-items: center;
+      font-family: var(--font-head);
+      font-size: .85rem;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+    }
+    .tl-body {
+      background: var(--paper);
+      border: 1px solid var(--c-line);
+      border-radius: 18px;
+      padding: 24px 22px;
+      box-shadow: 0 8px 30px rgba(10, 47, 40, .04);
+    }
+    .tl-body .step-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .tl-body h3 {
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .tl-body p {
+      color: var(--c-muted);
+      font-size: .96rem;
+      line-height: 1.6;
+      max-width: 40ch;
+    }
+
+    /* ---------- Why + audience dual panel ---------- */
+    .dual {
+      background: var(--c-bg-soft);
+      padding: 0;
+    }
+    .dual-grid {
+      display: grid;
+    }
+    .dual-panel {
+      padding: 72px 24px;
+    }
+    .dual-panel.dark {
+      background: var(--ink);
+      color: #fff;
+    }
+    .dual-panel.dark .sec-title { color: #fff; }
+    .dual-panel.dark .sec-lead { color: rgba(255, 255, 255, .55); }
+    .dual-panel.dark .sec-label .tag { color: rgba(255, 255, 255, .4); }
+    .dual-panel.dark .sec-label .line { background: rgba(255, 255, 255, .12); }
+    .dual-inner { max-width: 520px; margin: 0 auto; }
+
+    .why-list { margin-top: 36px; display: grid; gap: 0; }
+    .why-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      padding: 22px 0;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+    .why-item:last-child { border-bottom: 1px solid rgba(255, 255, 255, .1); }
+    .why-item .n {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-style: italic;
+      padding-top: 2px;
+    }
+    .why-item h3 {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .why-item p {
+      color: rgba(255, 255, 255, .55);
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+
+    .aud-stack { margin-top: 36px; display: grid; gap: 12px; }
+    .aud-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 20px;
+      background: var(--paper);
+      border: 1px solid var(--c-line);
+      border-radius: 16px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .aud-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--c-shadow);
+    }
+    .aud-card .mark {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(10, 47, 40, .07);
+      color: var(--ink);
+      display: grid; place-items: center;
+    }
+    .aud-card .mark svg { width: 22px; height: 22px; }
+    .aud-card h3 {
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .aud-card p {
+      color: var(--c-muted);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    /* ---------- Location: immersive strip ---------- */
+    .location {
+      background: var(--cream);
+    }
+    .loc-layout {
+      display: grid;
+      gap: 20px;
+    }
+    .loc-info {
+      background: var(--paper);
+      border: 1px solid var(--c-line);
+      border-radius: 24px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .hours-table {
+      display: grid;
+      gap: 0;
+      margin-top: 8px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--c-line);
+      font-size: .95rem;
+    }
+    .hours-row:last-child { border-bottom: 0; }
+    .hours-row span { color: var(--c-muted); }
+    .hours-row strong { font-weight: 600; color: var(--ink); }
+    .loc-contact {
+      display: grid;
+      gap: 10px;
+      padding-top: 8px;
+    }
+    .loc-contact a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(10, 47, 40, .04);
+      border: 1px solid var(--c-line);
+      font-weight: 600;
+      font-size: .92rem;
+      color: var(--ink);
+      transition: .2s;
+    }
+    .loc-contact a:hover {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+    .loc-contact a small {
+      font-weight: 500;
+      font-size: .75rem;
+      opacity: .55;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .map-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--c-line);
+      min-height: 360px;
+      background: var(--c-bg-soft);
+      position: relative;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border: 0;
+      filter: grayscale(.35) contrast(1.05) brightness(.98);
+    }
+    .map-chip {
+      position: absolute;
+      left: 16px; bottom: 16px;
+      z-index: 2;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255, 253, 249, .92);
+      border: 1px solid var(--c-line);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(10, 47, 40, .12);
+      max-width: 220px;
+    }
+    .map-chip strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .map-chip span {
+      font-size: .8rem;
+      color: var(--c-muted);
+    }
+
+    /* ---------- Contact premium ---------- */
+    .contact {
+      padding: 0 0 88px;
+      background: var(--cream);
+    }
+    .contact-shell {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .contact-card {
+      background: var(--ink-deep);
+      color: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      display: grid;
+      position: relative;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      right: -100px; top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 149, 62, .2), transparent 65%);
+      pointer-events: none;
+    }
+    .contact-intro {
+      padding: 48px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+    .contact-intro .sec-title { color: #fff; max-width: 12ch; }
+    .contact-intro .sec-lead { color: rgba(255, 255, 255, .58); }
+    .contact-intro .sec-label .tag { color: rgba(255, 255, 255, .4); }
+    .contact-intro .sec-label .line { background: rgba(255, 255, 255, .12); }
+    .contact-phone {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--gold-soft);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .contact-phone:hover { color: #fff; }
+    .contact-note {
+      margin-top: 8px;
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .45);
+    }
+    .contact-form-wrap {
+      padding: 36px 28px 40px;
+      position: relative;
+      background: rgba(255, 255, 255, .03);
+    }
+    .contact-form-wrap .form-card {
+      display: grid;
+      gap: 14px;
+    }
+    .contact-form-wrap label {
+      color: rgba(255, 255, 255, .7);
+      font-size: .82rem;
+      font-weight: 600;
+    }
+    .contact-form-wrap input,
+    .contact-form-wrap select,
+    .contact-form-wrap textarea {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: #fff;
+      border-radius: 12px;
+    }
+    .contact-form-wrap input::placeholder,
+    .contact-form-wrap textarea::placeholder {
+      color: rgba(255, 255, 255, .35);
+    }
+    .contact-form-wrap input:focus,
+    .contact-form-wrap select:focus,
+    .contact-form-wrap textarea:focus {
+      border-color: var(--gold);
+      outline: none;
+    }
+    .contact-form-wrap select option {
+      background: #0a2f28;
+      color: #fff;
+    }
+    .contact-form-wrap .form-ok {
+      color: #b8ffd8;
+      background: rgba(37, 211, 102, .12);
+      border-color: rgba(37, 211, 102, .35);
+    }
+    .contact-form-wrap .form-error { color: #ff8a9a; }
+    .contact-form-wrap .btn-wa { width: 100%; justify-content: center; }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      background: #040e0c;
+      border-top: 0;
+      padding-top: 56px;
+    }
+    .site-footer .brand { color: #fff; font-size: 1.4rem; }
+    .site-footer .brand em { color: var(--gold-soft); }
+    .site-footer h4 {
+      color: rgba(255, 255, 255, .9);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .site-footer a, .site-footer p { color: rgba(255, 255, 255, .48); }
+    .site-footer a:hover { color: #fff; }
+    .copy {
+      color: rgba(255, 255, 255, .28);
+      border-top-color: rgba(255, 255, 255, .08);
+    }
+
+    .card::before { display: none; }
+    .card:hover { transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (min-width: 760px) {
+      .hero-stage { grid-template-columns: 1.35fr .9fr; }
+      .hero-copy {
+        padding: calc(var(--header-h) + 64px) 48px 56px 48px;
+        justify-content: center;
+      }
+      .hero-rail { display: flex; }
+      .hero-facts-mobile { display: none; }
+      .about-layout { grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
+      .about-media { grid-template-rows: 220px 160px; }
+      .svc-row {
+        grid-template-columns: 56px 1fr 1.2fr 48px;
+        gap: 24px;
+        align-items: center;
+        padding: 32px 12px;
+      }
+      .process-layout { grid-template-columns: .85fr 1.15fr; align-items: start; gap: 64px; }
+      .timeline::before { left: 19px; }
+      .tl-item { grid-template-columns: 40px 1fr; }
+      .tl-dot { width: 40px; height: 40px; font-size: .95rem; }
+      .dual-grid { grid-template-columns: 1fr 1fr; }
+      .dual-panel { padding: 88px 48px; }
+      .loc-layout { grid-template-columns: .9fr 1.2fr; min-height: 420px; }
+      .map-frame, .map-frame iframe { min-height: 100%; height: 100%; }
+      .contact-card { grid-template-columns: .95fr 1.05fr; }
+      .contact-intro {
+        border-bottom: 0;
+        border-right: 1px solid rgba(255, 255, 255, .1);
+        padding: 56px 48px;
+      }
+      .contact-form-wrap { padding: 48px; }
+    }
+
+    @media (min-width: 1100px) {
+      .hero-copy { padding-left: max(48px, calc((100vw - var(--maxw)) / 2 + 20px)); }
+      .dual-panel.dark .dual-inner { margin-right: 0; margin-left: auto; padding-right: 24px; }
+      .dual-panel.light .dual-inner { margin-left: 0; margin-right: auto; padding-left: 24px; }
+    }
+
+    @media (max-width: 520px) {
+      .about-media {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 120px;
+      }
+      .ph-a { grid-column: 1 / -1; grid-row: auto; min-height: 220px; }
+      .about-stats { grid-template-columns: 1fr; }
+      .about-stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--c-line);
+        padding: 16px 0;
+      }
+      .about-stat:last-child { border-bottom: 0; }
+      .hero-facts-mobile { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "Soler Soluciones Contables",
+    "description": "Servicios contables en Santo Domingo",
+    "telephone": "+1-829-466-2817",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santo Domingo",
+      "addressRegion": "Ensanche La Fé",
+      "addressCountry": "DO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 18.4861346,
+      "longitude": -69.9312185
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "16:00"
+      }
+    ],
+    "areaServed": "Santo Domingo"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">Soler <em>Contables</em></a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+      </button>
+      <nav class="site-nav">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-primary btn-sm" href="https://wa.me/18294662817?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20servicios%20contables." target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 01 · HERO full-bleed editorial -->
+    <section class="hero">
+      <div class="hero-stage">
+        <div class="hero-copy reveal">
+          <span class="hero-eyebrow">Ensanche La Fé · Santo Domingo</span>
+          <h1>Contabilidad con <em>orden</em> y criterio</h1>
+          <p class="hero-lead">Soler Soluciones Contables. Llevamos los números de tu negocio con claridad: sin enredos, sin sorpresas de última hora y con atención directa.</p>
+          <div class="hero-actions">
+            <a class="btn btn-wa" href="https://wa.me/18294662817?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20servicios%20contables." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11.8 11.8 0 0 0 12.06 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.12 1.6 5.92L0 24l6.4-1.67a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.86-5.3 11.86-11.84 0-3.16-1.24-6.13-3.43-8.43Zm-8.44 18.2h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.8.99 1.02-3.7-.24-.38a9.8 9.8 0 0 1-1.5-5.23c0-5.42 4.43-9.83 9.88-9.83 2.64 0 5.12 1.03 6.98 2.89a9.76 9.76 0 0 1 2.9 6.95c0 5.42-4.43 9.84-9.85 9.84Zm5.4-7.37c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.47-1.75-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
+              Escribir por WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+          </div>
+          <div class="hero-facts-mobile">
+            <div class="hero-fact">
+              <span>Horario</span>
+              <strong>Lun–Vie 8:00–19:00</strong>
+            </div>
+            <div class="hero-fact">
+              <span>Fin de semana</span>
+              <strong>Sáb–Dom 9:00–16:00</strong>
+            </div>
+            <div class="hero-fact">
+              <span>Contacto</span>
+              <strong>+1 829 466 2817</strong>
+            </div>
+            <div class="hero-fact">
+              <span>Zona</span>
+              <strong>Ensanche La Fé</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-rail reveal">
+          <div class="hero-visual" aria-hidden="true">
+            <span class="hv-badge">Placeholder · Despacho</span>
+            <span class="hv-label">Soler Soluciones Contables</span>
+            <div class="hv-title">Orden financiero para tu negocio</div>
+          </div>
+          <div class="hero-facts">
+            <div class="hero-fact">
+              <span>Atención</span>
+              <strong>Lun–Vie 8:00–19:00</strong>
+            </div>
+            <div class="hero-fact">
+              <span>Fin de semana</span>
+              <strong>Sáb y Dom 9:00–16:00</strong>
+            </div>
+            <div class="hero-fact">
+              <span>Línea directa</span>
+              <strong>+1 829 466 2817</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Contabilidad al día</span>
+        <span>Impuestos y DGII</span>
+        <span>Nómina</span>
+        <span>Asesoría para dueños</span>
+        <span>Formalización</span>
+        <span>Consulta puntual</span>
+        <span>Ensanche La Fé</span>
+        <span>Contador certificado</span>
+        <span>Contabilidad al día</span>
+        <span>Impuestos y DGII</span>
+        <span>Nómina</span>
+        <span>Asesoría para dueños</span>
+        <span>Formalización</span>
+        <span>Consulta puntual</span>
+        <span>Ensanche La Fé</span>
+        <span>Contador certificado</span>
+      </div>
+    </div>
+
+    <!-- 02 · NOSOTROS -->
+    <section id="nosotros" class="about">
+      <div class="wrap about-layout">
+        <div class="about-media reveal" aria-hidden="true">
+          <div class="ph ph-a">
+            <span class="ph-mark">S</span>
+            <span class="ph-kicker">Placeholder · Oficina</span>
+            <div class="ph-name">Despacho contable local</div>
+          </div>
+          <div class="ph ph-b">
+            <span class="ph-kicker">Placeholder</span>
+            <div class="ph-name">Documentación clara</div>
+          </div>
+          <div class="ph ph-c">
+            <span class="ph-kicker">Placeholder</span>
+            <div class="ph-name">Atención cercana</div>
+          </div>
+        </div>
+
+        <div class="about-body reveal">
+          <div class="sec-label">
+            <span class="idx">01</span>
+            <span class="line"></span>
+            <span class="tag">Sobre nosotros</span>
+          </div>
+          <h2 class="sec-title">Un despacho que habla el idioma de tu <em>negocio</em></h2>
+          <p>Somos <strong>Soler Soluciones Contables</strong>. Trabajamos desde Ensanche La Fé con un enfoque práctico: menos jerga, más control. Te ayudamos a mantener ingresos, gastos, impuestos y obligaciones al día.</p>
+          <p>Ya sea contabilidad mensual, cumplimiento con la DGII, nómina o una consulta puntual, el proceso es simple y se coordina por WhatsApp al <strong>+1 829 466 2817</strong>.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <b>L–V</b>
+              <span>8:00 a 19:00 atención continua</span>
+            </div>
+            <div class="about-stat">
+              <b>S–D</b>
+              <span>9:00 a 16:00 fin de semana</span>
+            </div>
+            <div class="about-stat">
+              <b>SD</b>
+              <span>Ensanche La Fé, Santo Domingo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · SERVICIOS magazine list -->
+    <section id="servicios" class="services">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="sec-label">
+            <span class="idx">02</span>
+            <span class="line"></span>
+            <span class="tag">Servicios</span>
+          </div>
+          <h2 class="sec-title">Lo que resolvemos en tu operación</h2>
+          <p class="sec-lead">Desde el día a día contable hasta las obligaciones con la DGII. Tú operas; nosotros ordenamos los números.</p>
+        </div>
+
+        <div class="svc-list">
+          <article class="svc-row reveal">
+            <span class="svc-num">01</span>
+            <h3>Contabilidad al día</h3>
+            <p>Registro de ingresos y gastos, estados claros y un panorama real de cómo va tu negocio mes a mes.</p>
+            <span class="svc-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            </span>
+          </article>
+          <article class="svc-row reveal">
+            <span class="svc-num">02</span>
+            <h3>Impuestos y DGII</h3>
+            <p>Declaraciones, ITBIS, ISR y el calendario fiscal sin que se te pase una fecha.</p>
+            <span class="svc-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            </span>
+          </article>
+          <article class="svc-row reveal">
+            <span class="svc-num">03</span>
+            <h3>Nómina y personal</h3>
+            <p>Cálculo de salarios, retenciones y lo necesario para mantener tu equipo en regla.</p>
+            <span class="svc-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+          </article>
+          <article class="svc-row reveal">
+            <span class="svc-num">04</span>
+            <h3>Asesoría para dueños</h3>
+            <p>Te explicamos las cifras en lenguaje simple para que tomes mejores decisiones.</p>
+            <span class="svc-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+            </span>
+          </article>
+          <article class="svc-row reveal">
+            <span class="svc-num">05</span>
+            <h3>Formalización</h3>
+            <p>Apoyo contable si estás armando o reordenando la estructura de tu empresa.</p>
+            <span class="svc-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </span>
+          </article>
+          <article class="svc-row reveal">
+            <span class="svc-num">06</span>
+            <h3>Consulta puntual</h3>
+            <p>¿Tienes una duda fiscal o un cierre pendiente? Escríbenos y lo vemos.</p>
+            <span class="svc-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · PROCESO timeline -->
+    <section id="proceso" class="process-sec">
+      <div class="wrap process-layout">
+        <div class="reveal">
+          <div class="sec-label">
+            <span class="idx">03</span>
+            <span class="line"></span>
+            <span class="tag">Cómo trabajamos</span>
+          </div>
+          <h2 class="sec-title">Tres pasos. Sin fricción. Por <em>WhatsApp</em>.</h2>
+          <p class="sec-lead">No necesitas un proceso largo para empezar. Cuentas tu caso, lo revisamos y quedas con un plan claro.</p>
+          <a class="btn btn-primary" style="margin-top:28px" href="https://wa.me/18294662817?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20servicios%20contables." target="_blank" rel="noopener">Empezar ahora</a>
+        </div>
+
+        <div class="timeline reveal">
+          <article class="tl-item">
+            <span class="tl-dot">1</span>
+            <div class="tl-body">
+              <div class="step-label">Paso uno</div>
+              <h3>Me escribes</h3>
+              <p>Cuentas qué tipo de negocio tienes y qué necesitas: contabilidad mensual, impuestos o una consulta.</p>
+            </div>
+          </article>
+          <article class="tl-item">
+            <span class="tl-dot">2</span>
+            <div class="tl-body">
+              <div class="step-label">Paso dos</div>
+              <h3>Revisamos tu caso</h3>
+              <p>Vemos en qué punto estás y qué documentos hacen falta para avanzar sin fricción.</p>
+            </div>
+          </article>
+          <article class="tl-item">
+            <span class="tl-dot">3</span>
+            <div class="tl-body">
+              <div class="step-label">Paso tres</div>
+              <h3>Quedas en orden</h3>
+              <p>Quedas con un plan claro: qué se hace, cuándo y cómo te mantenemos al día.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · DUAL: por qué + para quién -->
+    <section class="dual" id="para-quien">
+      <div class="dual-grid">
+        <div class="dual-panel dark">
+          <div class="dual-inner reveal">
+            <div class="sec-label">
+              <span class="idx">04</span>
+              <span class="line"></span>
+              <span class="tag">Por qué Soler</span>
+            </div>
+            <h2 class="sec-title">Orden financiero sin complicaciones</h2>
+            <p class="sec-lead">Lo que buscas de un contador local: claridad, cumplimiento y comunicación fácil.</p>
+            <div class="why-list">
+              <article class="why-item">
+                <span class="n">01</span>
+                <div>
+                  <h3>Lenguaje simple</h3>
+                  <p>Te explicamos los números sin tecnicismos innecesarios. Entiendes el estado de tu negocio de verdad.</p>
+                </div>
+              </article>
+              <article class="why-item">
+                <span class="n">02</span>
+                <div>
+                  <h3>Cumplimiento al día</h3>
+                  <p>Declaraciones, ITBIS, ISR y fechas de la DGII bajo control, para evitar multas y contratiempos.</p>
+                </div>
+              </article>
+              <article class="why-item">
+                <span class="n">03</span>
+                <div>
+                  <h3>Cercanía real</h3>
+                  <p>Atención en Ensanche La Fé y por WhatsApp al +1 829 466 2817. Sin intermediarios.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="dual-panel light">
+          <div class="dual-inner reveal">
+            <div class="sec-label">
+              <span class="idx">05</span>
+              <span class="line"></span>
+              <span class="tag">Para quién es</span>
+            </div>
+            <h2 class="sec-title">Hecho para quien mueve un negocio de <em>verdad</em></h2>
+            <p class="sec-lead">Si facturas, pagas nómina o solo quieres dejar de improvisar con Excel, aquí hay espacio para ti.</p>
+            <div class="aud-stack">
+              <article class="aud-card">
+                <span class="mark" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+                </span>
+                <div>
+                  <h3>Pequeñas empresas</h3>
+                  <p>Comercios y servicios que necesitan contabilidad sin un departamento interno.</p>
+                </div>
+              </article>
+              <article class="aud-card">
+                <span class="mark" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </span>
+                <div>
+                  <h3>Emprendedores</h3>
+                  <p>Estás creciendo y ya no alcanza con anotar todo “más o menos”.</p>
+                </div>
+              </article>
+              <article class="aud-card">
+                <span class="mark" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <div>
+                  <h3>Independientes</h3>
+                  <p>Profesionales y freelancers que quieren declarar y llevar control limpio.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · UBICACIÓN -->
+    <section id="ubicacion" class="location">
+      <div class="wrap">
+        <div class="reveal" style="margin-bottom:40px">
+          <div class="sec-label">
+            <span class="idx">06</span>
+            <span class="line"></span>
+            <span class="tag">Ubicación y horario</span>
+          </div>
+          <h2 class="sec-title">Ensanche La Fé, Santo Domingo</h2>
+          <p class="sec-lead">Atención en zona Ensanche La Fé. Confirma por WhatsApp si vienes en persona o si resolvemos a distancia.</p>
+        </div>
+
+        <div class="loc-layout">
+          <div class="loc-info reveal">
+            <div>
+              <h3 style="font-size:1.5rem;margin-bottom:8px;color:var(--ink)">Horario de atención</h3>
+              <p style="color:var(--c-muted);font-size:.92rem;margin-bottom:8px">Contador certificado · servicio contable local</p>
+              <div class="hours-table">
+                <div class="hours-row"><span>Lunes a viernes</span><strong>8:00 – 19:00</strong></div>
+                <div class="hours-row"><span>Sábado</span><strong>9:00 – 16:00</strong></div>
+                <div class="hours-row"><span>Domingo</span><strong>9:00 – 16:00</strong></div>
+              </div>
+            </div>
+            <div class="loc-contact">
+              <a href="https://wa.me/18294662817?text=Hola%2C%20quiero%20agendar%20una%20consulta%20contable." target="_blank" rel="noopener">
+                Agendar por WhatsApp
+                <small>Directo</small>
+              </a>
+              <a href="tel:+18294662817">
+                +1 829 466 2817
+                <small>Llamar</small>
+              </a>
+              <a href="https://www.google.com/maps/place/?q=place_id:ChIJJ1c_WgKJr44RQTcK-Ktws1g" target="_blank" rel="noopener">
+                Abrir en Google Maps
+                <small>Mapa</small>
+              </a>
+            </div>
+          </div>
+
+          <div class="map-frame reveal">
+            <iframe title="Mapa Soler Soluciones Contables" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=18.4861346,-69.9312185&z=16&output=embed"></iframe>
+            <div class="map-chip">
+              <strong>Ensanche La Fé</strong>
+              <span>Santo Domingo, República Dominicana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · CONTACTO -->
+    <section id="contacto" class="contact">
+      <div class="contact-shell">
+        <div class="contact-card reveal">
+          <div class="contact-intro">
+            <div>
+              <div class="sec-label">
+                <span class="idx">07</span>
+                <span class="line"></span>
+                <span class="tag">Contacto</span>
+              </div>
+              <h2 class="sec-title">Hablemos de tus <em style="color:var(--gold-soft);font-style:italic">números</em></h2>
+              <p class="sec-lead">Cuéntanos tu negocio y qué necesitas. Te respondemos por el mismo WhatsApp.</p>
+            </div>
+            <div>
+              <a class="contact-phone" href="tel:+18294662817">+1 829 466 2817</a>
+              <p class="contact-note">El mismo número de Google y WhatsApp. Sin intermediarios.</p>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form class="form-card form-grid" data-wa-form data-wa-number="18294662817">
+              <div class="form-field">
+                <label for="f-nombre">Tu nombre</label>
+                <input id="f-nombre" name="nombre" type="text" placeholder="Ej: Laura Méndez" required autocomplete="name" />
+                <span class="form-error"></span>
+              </div>
+              <div class="form-field">
+                <label for="f-tel">Tu WhatsApp</label>
+                <input id="f-tel" name="telefono" type="tel" placeholder="829 000 0000" required autocomplete="tel" />
+                <span class="form-error"></span>
+              </div>
+              <div class="form-field">
+                <label for="f-servicio">¿Qué necesitas?</label>
+                <select id="f-servicio" name="servicio">
+                  <option value="">Selecciona</option>
+                  <option>Contabilidad mensual</option>
+                  <option>Impuestos / DGII</option>
+                  <option>Nómina</option>
+                  <option>Asesoría / consulta</option>
+                  <option>Formalización de empresa</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="f-msg">Cuéntanos un poco más</label>
+                <textarea id="f-msg" name="mensaje" placeholder="Tipo de negocio y qué te urge resolver"></textarea>
+              </div>
+              <div class="form-ok"></div>
+              <button class="btn btn-wa" type="submit">Enviar por WhatsApp</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap cols">
+      <div>
+        <a class="brand" href="./">Soler <em>Soluciones Contables</em></a>
+        <p style="margin-top:14px;max-width:300px">Servicios contables en Ensanche La Fé, Santo Domingo. Orden financiero para tu negocio.</p>
+      </div>
+      <div>
+        <h4>En la página</h4>
+        <ul>
+          <li><a href="#nosotros">Sobre nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#para-quien">Para quién</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+18294662817">+1 829 466 2817</a></li>
+          <li><a href="https://wa.me/18294662817" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.google.com/maps/place/?q=place_id:ChIJJ1c_WgKJr44RQTcK-Ktws1g" target="_blank" rel="noopener">Ensanche La Fé</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© <span data-year></span> Soler Soluciones Contables · Santo Domingo</div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/18294662817?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20servicios%20contables." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.06 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.12 1.6 5.92L0 24l6.4-1.67a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.86-5.3 11.86-11.84 0-3.16-1.24-6.13-3.43-8.43Zm-8.44 18.2h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.8.99 1.02-3.7-.24-.38a9.8 9.8 0 0 1-1.5-5.23c0-5.42 4.43-9.83 9.88-9.83 2.64 0 5.12 1.03 6.98 2.89a9.76 9.76 0 0 1 2.9 6.95c0 5.42-4.43 9.84-9.85 9.84Zm5.4-7.37c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.47-1.75-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
+  </a>
+
+  <script src="../js/base.js"></script>
+</body>
+</html>
