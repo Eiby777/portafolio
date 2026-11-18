@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Komiix — Abisay Medina</title>
+    <meta
+      name="description"
+      content="Editor web de manga y manhwa con canvas, herramientas de texto, OCR y procesamiento asistido por IA."
+    />
+    <meta name="theme-color" content="#101d38" />
+    <link
+      rel="canonical"
+      href="https://eiby777.github.io/portafolio/proyectos/komiix/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Komiix — Abisay Medina" />
+    <meta
+      property="og:description"
+      content="Editor web de manga y manhwa con canvas, herramientas de texto, OCR y procesamiento asistido por IA."
+    />
+    <meta
+      property="og:url"
+      content="https://eiby777.github.io/portafolio/proyectos/komiix/"
+    />
+    <meta
+      property="og:image"
+      content="https://eiby777.github.io/portafolio/assets/og-portfolio.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../assets/favicon.svg" />
+    <link
+      rel="preload"
+      href="../../assets/fonts/bricolage-grotesque.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="../../assets/css/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <a class="brand" href="../../"
+        ><span class="brand-mark">am.</span
+        ><span>Abisay Medina<small>Desarrollador full stack</small></span></a
+      ><button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        Menú
+      </button>
+      <nav id="navigation" aria-label="Principal">
+        <a href="../../#proyectos">Proyectos</a
+        ><a href="../../#servicios">Servicios</a
+        ><a href="../../#sobre-mi">Sobre mí</a
+        ><a class="nav-contact" href="../../#contacto">Hablemos</a>
+      </nav>
+    </header>
+    <main id="contenido">
+      <section class="case-intro section">
+        <a class="back-link" href="../../#proyectos">Todos los proyectos</a>
+        <p class="eyebrow">Editor web · Procesamiento de imágenes</p>
+        <h1>Un espacio de trabajo para editar y traducir imágenes.</h1>
+        <p class="lead">
+          Desarrollé un editor que reúne las etapas de preparación, anotación,
+          limpieza, traducción y salida de páginas. Combina interacción con
+          canvas, gestión de proyectos y servicios de procesamiento de imágenes.
+        </p>
+        <div class="case-facts">
+          <div><span>Proyecto</span><strong>Komiix</strong></div>
+          <div>
+            <span>Mi aporte</span>
+            <p>
+              Interfaz de edición, herramientas y gestión de estado, integración
+              de modelos y OCR, servicios de backend y almacenamiento de
+              proyectos.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="case-visual wrap">
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/komiix-editor.png"
+            data-caption="Vista de Komiix. Interfaz local de demostración."
+            aria-label="Ampliar captura. Vista de Komiix. Interfaz local de demostración."
+          >
+            <img
+              src="../../assets/cases/komiix-editor.png"
+              alt="Vista de Komiix. Interfaz local de demostración."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Vista de Komiix. Interfaz local de demostración. Pulsa la imagen
+            para ampliarla.
+          </figcaption>
+        </figure>
+      </div>
+      <section class="section split">
+        <div>
+          <p class="eyebrow">El contexto</p>
+          <h2>Del proceso a la aplicación.</h2>
+        </div>
+        <div>
+          <p class="large-copy">
+            Editar una página traducida implica trabajar sobre la imagen,
+            extraer texto, limpiar el fondo y componer nuevos textos. Komiix
+            organiza estas tareas en áreas de trabajo dentro del mismo editor.
+          </p>
+        </div>
+      </section>
+      <section class="section features-section">
+        <div class="section-heading">
+          <p class="eyebrow">Alcance desarrollado</p>
+          <h2>Qué permite hacer.</h2>
+        </div>
+        <div class="features">
+          <article>
+            <h3>Edición sobre canvas</h3>
+            <p>
+              Herramientas de interacción, zoom, capas y composición de texto
+              sobre imágenes.
+            </p>
+          </article>
+          <article>
+            <h3>Etapas de trabajo</h3>
+            <p>
+              Áreas para original, anotación, limpieza, traducción y
+              exportación.
+            </p>
+          </article>
+          <article>
+            <h3>Procesamiento de imágenes</h3>
+            <p>
+              Integración de detección, OCR e inpainting mediante modelos y
+              servicios especializados.
+            </p>
+          </article>
+          <article>
+            <h3>Gestión de proyectos</h3>
+            <p>
+              Autenticación, almacenamiento local y componentes para organizar
+              imágenes y recuperar proyectos.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section technical">
+        <div>
+          <p class="eyebrow">Cómo lo construí</p>
+          <h2>Las piezas del sistema.</h2>
+          <p>
+            El canvas y el estado de edición se gestionan en el frontend.
+            FastAPI expone servicios de OCR y distribución de recursos para los
+            modelos. El proyecto utiliza almacenamiento local del navegador para
+            conservar información de trabajo.
+          </p>
+        </div>
+        <ol class="workflow" aria-label="Flujo del proyecto">
+          <li>Importar imágenes</li>
+          <li>Anotar y limpiar</li>
+          <li>OCR y traducción</li>
+          <li>Editar composición</li>
+          <li>Exportar</li>
+        </ol>
+        <ul class="stack-list">
+          <li>React · JavaScript</li>
+          <li>Fabric.js · Canvas</li>
+          <li>Zustand</li>
+          <li>Python · FastAPI</li>
+          <li>ONNX Runtime · OCR</li>
+          <li>Supabase · Docker</li>
+        </ul>
+      </section>
+      <section class="section gallery-section"></section>
+      <section class="section access">
+        <div>
+          <p class="eyebrow">Estado y acceso</p>
+          <h2>Conoce el proyecto de cerca.</h2>
+          <p>
+            Recorrido del editor disponible a solicitud. La captura muestra la
+            interfaz real ejecutada localmente con una ilustración de muestra
+            creada para esta presentación. Las funciones de IA requieren sus
+            modelos y servicios configurados.
+          </p>
+          <a
+            class="button primary"
+            href="mailto:abisaymedinarosario@gmail.com?subject=Consultar%20sobre%20Komiix"
+            >Consultar sobre Komiix</a
+          >
+        </div>
+      </section>
+      <div class="section next-case">
+        <span>Siguiente proyecto</span
+        ><a href="../pdf-excel/">Cotizaciones PDF a Excel</a>
+      </div>
+    </main>
+    <section class="contact section" id="contacto">
+      <div>
+        <p class="eyebrow">Trabajemos juntos</p>
+        <h2>¿Tu próximo proyecto<br />necesita apoyo técnico?</h2>
+        <p>
+          Cuéntame qué quieres construir, qué tienes avanzado y dónde necesitas
+          ayuda.
+        </p>
+        <a class="contact-email" href="mailto:abisaymedinarosario@gmail.com"
+          >abisaymedinarosario@gmail.com</a
+        >
+        <div class="actions">
+          <a
+            class="button light"
+            href="https://wa.me/18297237899"
+            target="_blank"
+            rel="noopener"
+            >Hablar por WhatsApp</a
+          ><a class="text-link" href="../../assets/cv/Abisay-Medina-CV.pdf"
+            >Descargar CV</a
+          >
+        </div>
+      </div>
+      <div class="contact-aside">
+        <p>Desde República Dominicana.<br />Colaboración remota.</p>
+        <a href="https://github.com/Eiby777" target="_blank" rel="noopener"
+          >GitHub</a
+        ><a
+          href="https://www.linkedin.com/in/abisay-medina/"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+      </div>
+    </section>
+    <footer class="footer">
+      <a href="../../">Abisay Medina Rosario</a
+      ><span>Desarrollo · Automatización · IA</span
+      ><span>© <span data-year>2026</span></span>
+    </footer>
+    <dialog class="image-dialog" aria-label="Captura ampliada">
+      <button type="button" class="close-dialog">Cerrar imagen</button
+      ><img alt="" />
+      <p></p>
+    </dialog>
+    <script src="../../assets/js/site.js" defer></script>
+  </body>
+</html>

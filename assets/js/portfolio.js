@@ -172,8 +172,8 @@
     const slug = card.dataset.slug;
     dialogImage.src =
       currentDevice === 'mobile'
-        ? `assets/shots/mobile/${slug}.webp`
-        : `assets/shots/${slug}.webp`;
+        ? `../assets/shots/mobile/${slug}.webp`
+        : `../assets/shots/${slug}.webp`;
     dialogImage.alt = `Vista ${currentDevice === 'mobile' ? 'móvil' : 'de escritorio'} del sitio de ${card.dataset.name}`;
     if (dialogPreview) dialogPreview.dataset.device = currentDevice;
     if (dialogUrl) dialogUrl.textContent = `sites/${slug}/`;

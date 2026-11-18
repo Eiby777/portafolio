@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reservas hoteleras — Abisay Medina</title>
+    <meta
+      name="description"
+      content="Aplicación de gestión hotelera conectada con la API XML de Veturis, con búsqueda, reservas, cancelaciones y vouchers."
+    />
+    <meta name="theme-color" content="#101d38" />
+    <link
+      rel="canonical"
+      href="https://eiby777.github.io/portafolio/proyectos/reservas-hoteleras/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Reservas hoteleras — Abisay Medina" />
+    <meta
+      property="og:description"
+      content="Aplicación de gestión hotelera conectada con la API XML de Veturis, con búsqueda, reservas, cancelaciones y vouchers."
+    />
+    <meta
+      property="og:url"
+      content="https://eiby777.github.io/portafolio/proyectos/reservas-hoteleras/"
+    />
+    <meta
+      property="og:image"
+      content="https://eiby777.github.io/portafolio/assets/og-portfolio.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../assets/favicon.svg" />
+    <link
+      rel="preload"
+      href="../../assets/fonts/bricolage-grotesque.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="../../assets/css/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <a class="brand" href="../../"
+        ><span class="brand-mark">am.</span
+        ><span>Abisay Medina<small>Desarrollador full stack</small></span></a
+      ><button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        Menú
+      </button>
+      <nav id="navigation" aria-label="Principal">
+        <a href="../../#proyectos">Proyectos</a
+        ><a href="../../#servicios">Servicios</a
+        ><a href="../../#sobre-mi">Sobre mí</a
+        ><a class="nav-contact" href="../../#contacto">Hablemos</a>
+      </nav>
+    </header>
+    <main id="contenido">
+      <section class="case-intro section">
+        <a class="back-link" href="../../#proyectos">Todos los proyectos</a>
+        <p class="eyebrow">Aplicación web · Integración de API</p>
+        <h1>De la disponibilidad al comprobante de reserva.</h1>
+        <p class="lead">
+          Construí una aplicación que conecta una interfaz de gestión con los
+          servicios de Veturis. El flujo incluye búsqueda de hoteles,
+          confirmación de reservas, consulta de operaciones y generación de
+          comprobantes.
+        </p>
+        <div class="case-facts">
+          <div><span>Proyecto</span><strong>Reservas hoteleras</strong></div>
+          <div>
+            <span>Mi aporte</span>
+            <p>
+              Frontend, endpoints de integración, transformación de mensajes
+              XML, autenticación, persistencia y generación de vouchers.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="case-visual wrap">
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/veturis-busqueda.png"
+            data-caption="Vista de Reservas hoteleras. Interfaz local de demostración."
+            aria-label="Ampliar captura. Vista de Reservas hoteleras. Interfaz local de demostración."
+          >
+            <img
+              src="../../assets/cases/veturis-busqueda.png"
+              alt="Vista de Reservas hoteleras. Interfaz local de demostración."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Vista de Reservas hoteleras. Interfaz local de demostración. Pulsa
+            la imagen para ampliarla.
+          </figcaption>
+        </figure>
+      </div>
+      <section class="section split">
+        <div>
+          <p class="eyebrow">El contexto</p>
+          <h2>Del proceso a la aplicación.</h2>
+        </div>
+        <div>
+          <p class="large-copy">
+            Una API de reservas devuelve estructuras técnicas que el equipo
+            necesita utilizar en su operación diaria. La aplicación reúne
+            búsquedas, ocupación, políticas y datos de reserva en un flujo de
+            trabajo accesible desde el navegador.
+          </p>
+        </div>
+      </section>
+      <section class="section features-section">
+        <div class="section-heading">
+          <p class="eyebrow">Alcance desarrollado</p>
+          <h2>Qué permite hacer.</h2>
+        </div>
+        <div class="features">
+          <article>
+            <h3>Búsqueda de disponibilidad</h3>
+            <p>
+              Fechas, ocupación, filtros y consulta de opciones de alojamiento a
+              través de la integración.
+            </p>
+          </article>
+          <article>
+            <h3>Gestión de reservas</h3>
+            <p>
+              Formularios de confirmación, listado de operaciones y solicitud de
+              cancelaciones.
+            </p>
+          </article>
+          <article>
+            <h3>Información estructurada</h3>
+            <p>
+              Modelos y funciones de transformación entre solicitudes de la
+              aplicación y mensajes XML del proveedor.
+            </p>
+          </article>
+          <article>
+            <h3>Vouchers y acceso</h3>
+            <p>
+              Autenticación mediante Supabase y componentes para visualizar y
+              generar comprobantes en PDF.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section technical">
+        <div>
+          <p class="eyebrow">Cómo lo construí</p>
+          <h2>Las piezas del sistema.</h2>
+          <p>
+            Organicé la integración en servicios de búsqueda y operaciones de
+            reserva, con funciones para construir y analizar XML. El frontend
+            trabaja con datos estructurados y componentes específicos para
+            ocupación, filtros y comprobantes.
+          </p>
+        </div>
+        <ol class="workflow" aria-label="Flujo del proyecto">
+          <li>Interfaz de gestión</li>
+          <li>API FastAPI</li>
+          <li>Solicitud XML</li>
+          <li>API de Veturis</li>
+          <li>Respuesta estructurada</li>
+        </ol>
+        <ul class="stack-list">
+          <li>React · TypeScript</li>
+          <li>Python · FastAPI</li>
+          <li>API XML de Veturis</li>
+          <li>Supabase</li>
+          <li>PDF</li>
+          <li>Docker · Nginx</li>
+        </ul>
+      </section>
+      <section class="section gallery-section">
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/veturis-confirmacion.png"
+            data-caption="Formulario de confirmación de reserva en el entorno local de demostración."
+            aria-label="Ampliar captura. Formulario de confirmación de reserva en el entorno local de demostración."
+          >
+            <img
+              src="../../assets/cases/veturis-confirmacion.png"
+              alt="Formulario de confirmación de reserva en el entorno local de demostración."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Formulario de confirmación de reserva en el entorno local de
+            demostración. Pulsa la imagen para ampliarla.
+          </figcaption>
+        </figure>
+      </section>
+      <section class="section access">
+        <div>
+          <p class="eyebrow">Estado y acceso</p>
+          <h2>Conoce el proyecto de cerca.</h2>
+          <p>
+            Proyecto privado. Demostración a solicitud. Las capturas
+            corresponden a la interfaz local con una sesión ficticia; las
+            operaciones con el proveedor requieren acceso autorizado.
+          </p>
+          <a
+            class="button primary"
+            href="mailto:abisaymedinarosario@gmail.com?subject=Solicitar%20demostración%20de%20reservas"
+            >Solicitar demostración de reservas</a
+          >
+        </div>
+      </section>
+      <div class="section next-case">
+        <span>Siguiente proyecto</span><a href="../komiix/">Komiix</a>
+      </div>
+    </main>
+    <section class="contact section" id="contacto">
+      <div>
+        <p class="eyebrow">Trabajemos juntos</p>
+        <h2>¿Tu próximo proyecto<br />necesita apoyo técnico?</h2>
+        <p>
+          Cuéntame qué quieres construir, qué tienes avanzado y dónde necesitas
+          ayuda.
+        </p>
+        <a class="contact-email" href="mailto:abisaymedinarosario@gmail.com"
+          >abisaymedinarosario@gmail.com</a
+        >
+        <div class="actions">
+          <a
+            class="button light"
+            href="https://wa.me/18297237899"
+            target="_blank"
+            rel="noopener"
+            >Hablar por WhatsApp</a
+          ><a class="text-link" href="../../assets/cv/Abisay-Medina-CV.pdf"
+            >Descargar CV</a
+          >
+        </div>
+      </div>
+      <div class="contact-aside">
+        <p>Desde República Dominicana.<br />Colaboración remota.</p>
+        <a href="https://github.com/Eiby777" target="_blank" rel="noopener"
+          >GitHub</a
+        ><a
+          href="https://www.linkedin.com/in/abisay-medina/"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+      </div>
+    </section>
+    <footer class="footer">
+      <a href="../../">Abisay Medina Rosario</a
+      ><span>Desarrollo · Automatización · IA</span
+      ><span>© <span data-year>2026</span></span>
+    </footer>
+    <dialog class="image-dialog" aria-label="Captura ampliada">
+      <button type="button" class="close-dialog">Cerrar imagen</button
+      ><img alt="" />
+      <p></p>
+    </dialog>
+    <script src="../../assets/js/site.js" defer></script>
+  </body>
+</html>

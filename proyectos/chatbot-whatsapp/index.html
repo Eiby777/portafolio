@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asistente de WhatsApp — Abisay Medina</title>
+    <meta
+      name="description"
+      content="Plataforma multiempresa para atender consultas, gestionar conversaciones y reservar citas con asistencia de IA."
+    />
+    <meta name="theme-color" content="#101d38" />
+    <link
+      rel="canonical"
+      href="https://eiby777.github.io/portafolio/proyectos/chatbot-whatsapp/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Asistente de WhatsApp — Abisay Medina" />
+    <meta
+      property="og:description"
+      content="Plataforma multiempresa para atender consultas, gestionar conversaciones y reservar citas con asistencia de IA."
+    />
+    <meta
+      property="og:url"
+      content="https://eiby777.github.io/portafolio/proyectos/chatbot-whatsapp/"
+    />
+    <meta
+      property="og:image"
+      content="https://eiby777.github.io/portafolio/assets/og-portfolio.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../../assets/favicon.svg" />
+    <link
+      rel="preload"
+      href="../../assets/fonts/bricolage-grotesque.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="../../assets/css/site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="header">
+      <a class="brand" href="../../"
+        ><span class="brand-mark">am.</span
+        ><span>Abisay Medina<small>Desarrollador full stack</small></span></a
+      ><button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        Menú
+      </button>
+      <nav id="navigation" aria-label="Principal">
+        <a href="../../#proyectos">Proyectos</a
+        ><a href="../../#servicios">Servicios</a
+        ><a href="../../#sobre-mi">Sobre mí</a
+        ><a class="nav-contact" href="../../#contacto">Hablemos</a>
+      </nav>
+    </header>
+    <main id="contenido">
+      <section class="case-intro section">
+        <a class="back-link" href="../../#proyectos">Todos los proyectos</a>
+        <p class="eyebrow">SaaS · Automatización e IA</p>
+        <h1>La conversación y la agenda, en un mismo sistema.</h1>
+        <p class="lead">
+          Desarrollé una plataforma con un panel de administración y un espacio
+          para cada negocio. El asistente utiliza herramientas para consultar
+          disponibilidad y gestionar citas, mientras el equipo supervisa las
+          conversaciones.
+        </p>
+        <div class="case-facts">
+          <div><span>Proyecto</span><strong>Asistente de WhatsApp</strong></div>
+          <div>
+            <span>Mi aporte</span>
+            <p>
+              Desarrollo full stack, diseño de flujos, integración de WhatsApp y
+              modelos de IA, persistencia y configuración de despliegue.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="case-visual wrap">
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/chatbot-admin.png"
+            data-caption="Vista de Asistente de WhatsApp. Interfaz local de demostración."
+            aria-label="Ampliar captura. Vista de Asistente de WhatsApp. Interfaz local de demostración."
+          >
+            <img
+              src="../../assets/cases/chatbot-admin.png"
+              alt="Vista de Asistente de WhatsApp. Interfaz local de demostración."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Vista de Asistente de WhatsApp. Interfaz local de demostración.
+            Pulsa la imagen para ampliarla.
+          </figcaption>
+        </figure>
+      </div>
+      <section class="section split">
+        <div>
+          <p class="eyebrow">El contexto</p>
+          <h2>Del proceso a la aplicación.</h2>
+        </div>
+        <div>
+          <p class="large-copy">
+            La atención por mensajería combina preguntas frecuentes, búsqueda de
+            horarios, reservas y situaciones que requieren a una persona.
+            Construí el sistema para reunir esas tareas y permitir configurar la
+            operación de cada negocio.
+          </p>
+        </div>
+      </section>
+      <section class="section features-section">
+        <div class="section-heading">
+          <p class="eyebrow">Alcance desarrollado</p>
+          <h2>Qué permite hacer.</h2>
+        </div>
+        <div class="features">
+          <article>
+            <h3>Un espacio por negocio</h3>
+            <p>
+              Cuentas, servicios, profesionales, horarios y configuración del
+              bot, junto a un panel central de administración.
+            </p>
+          </article>
+          <article>
+            <h3>IA conectada a acciones</h3>
+            <p>
+              El agente dispone de herramientas para consultar horarios,
+              reservar, confirmar, cancelar y reprogramar citas.
+            </p>
+          </article>
+          <article>
+            <h3>Supervisión del equipo</h3>
+            <p>
+              Historial de mensajes, resumen de conversación, pausas del bot y
+              solicitud de atención humana.
+            </p>
+          </article>
+          <article>
+            <h3>Control de operación</h3>
+            <p>
+              Estado de la conexión de WhatsApp, consumo de modelos, límites por
+              negocio y registros de auditoría.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section technical">
+        <div>
+          <p class="eyebrow">Cómo lo construí</p>
+          <h2>Las piezas del sistema.</h2>
+          <p>
+            El modelo propone acciones mediante herramientas. La disponibilidad
+            y la escritura de las citas se resuelven en servicios de backend.
+            Los eventos entrantes se procesan con webhooks y trabajos en Redis,
+            y el panel recibe actualizaciones por eventos.
+          </p>
+        </div>
+        <ol class="workflow" aria-label="Flujo del proyecto">
+          <li>WhatsApp</li>
+          <li>Webhook y cola</li>
+          <li>Agente y herramientas</li>
+          <li>Datos y agenda</li>
+          <li>Panel del negocio</li>
+        </ol>
+        <ul class="stack-list">
+          <li>React · TypeScript</li>
+          <li>Python · FastAPI</li>
+          <li>PostgreSQL · SQLAlchemy</li>
+          <li>Redis · arq</li>
+          <li>Evolution API</li>
+          <li>OpenRouter · Docker</li>
+        </ul>
+      </section>
+      <section class="section gallery-section">
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/chatbot-chats.png"
+            data-caption="Bandeja de conversaciones y etapas de atención."
+            aria-label="Ampliar captura. Bandeja de conversaciones y etapas de atención."
+          >
+            <img
+              src="../../assets/cases/chatbot-chats.png"
+              alt="Bandeja de conversaciones y etapas de atención."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Bandeja de conversaciones y etapas de atención. Pulsa la imagen para
+            ampliarla.
+          </figcaption>
+        </figure>
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/chatbot-conversacion.png"
+            data-caption="Recorrido ilustrativo de una reserva en la interfaz de conversación."
+            aria-label="Ampliar captura. Recorrido ilustrativo de una reserva en la interfaz de conversación."
+          >
+            <img
+              src="../../assets/cases/chatbot-conversacion.png"
+              alt="Recorrido ilustrativo de una reserva en la interfaz de conversación."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Recorrido ilustrativo de una reserva en la interfaz de conversación.
+            Pulsa la imagen para ampliarla.
+          </figcaption>
+        </figure>
+        <figure class="case-figure">
+          <button
+            class="image-open"
+            type="button"
+            data-image="../../assets/cases/chatbot-agenda.png"
+            data-caption="Agenda con citas confirmadas y pendientes."
+            aria-label="Ampliar captura. Agenda con citas confirmadas y pendientes."
+          >
+            <img
+              src="../../assets/cases/chatbot-agenda.png"
+              alt="Agenda con citas confirmadas y pendientes."
+              loading="lazy"
+              width="1440"
+              height="960"
+            />
+          </button>
+          <figcaption>
+            Agenda con citas confirmadas y pendientes. Pulsa la imagen para
+            ampliarla.
+          </figcaption>
+        </figure>
+      </section>
+      <section class="section access">
+        <div>
+          <p class="eyebrow">Estado y acceso</p>
+          <h2>Conoce el proyecto de cerca.</h2>
+          <p>
+            Recorrido de la plataforma disponible a solicitud. Las capturas
+            muestran la interfaz real ejecutada localmente con respuestas de API
+            simuladas y datos ficticios.
+          </p>
+          <a
+            class="button primary"
+            href="mailto:abisaymedinarosario@gmail.com?subject=Solicitar%20recorrido%20del%20SaaS"
+            >Solicitar recorrido del SaaS</a
+          >
+        </div>
+      </section>
+      <div class="section next-case">
+        <span>Siguiente proyecto</span
+        ><a href="../reservas-hoteleras/">Reservas hoteleras</a>
+      </div>
+    </main>
+    <section class="contact section" id="contacto">
+      <div>
+        <p class="eyebrow">Trabajemos juntos</p>
+        <h2>¿Tu próximo proyecto<br />necesita apoyo técnico?</h2>
+        <p>
+          Cuéntame qué quieres construir, qué tienes avanzado y dónde necesitas
+          ayuda.
+        </p>
+        <a class="contact-email" href="mailto:abisaymedinarosario@gmail.com"
+          >abisaymedinarosario@gmail.com</a
+        >
+        <div class="actions">
+          <a
+            class="button light"
+            href="https://wa.me/18297237899"
+            target="_blank"
+            rel="noopener"
+            >Hablar por WhatsApp</a
+          ><a class="text-link" href="../../assets/cv/Abisay-Medina-CV.pdf"
+            >Descargar CV</a
+          >
+        </div>
+      </div>
+      <div class="contact-aside">
+        <p>Desde República Dominicana.<br />Colaboración remota.</p>
+        <a href="https://github.com/Eiby777" target="_blank" rel="noopener"
+          >GitHub</a
+        ><a
+          href="https://www.linkedin.com/in/abisay-medina/"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+      </div>
+    </section>
+    <footer class="footer">
+      <a href="../../">Abisay Medina Rosario</a
+      ><span>Desarrollo · Automatización · IA</span
+      ><span>© <span data-year>2026</span></span>
+    </footer>
+    <dialog class="image-dialog" aria-label="Captura ampliada">
+      <button type="button" class="close-dialog">Cerrar imagen</button
+      ><img alt="" />
+      <p></p>
+    </dialog>
+    <script src="../../assets/js/site.js" defer></script>
+  </body>
+</html>
